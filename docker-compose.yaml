@@ -1,0 +1,5 @@
+services:
+  db:
+    image: mysql
+    env_file:
+      - .docker.db.env

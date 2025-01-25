@@ -6,6 +6,8 @@
 - `DELETE /tasks/:id`
 
 # Prisma
+using a docker container with mysql latest
+
 ## schema
 Tasks should include: 
 - `id` auto increment
@@ -16,7 +18,9 @@ Tasks should include:
 - `updated_at`
 
 ## migration
-this occurs when schema differs
+creates the db provider schema from the prisma schema
+
+
 
 ## seeding
 this populates the db with test data

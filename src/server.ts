@@ -1,28 +1,26 @@
-import express from "@express"
+import express from "express/index.js"
 import middleware from "./middleware"
 
 const app = express();
 
-// auth middleware
-app.use();
+app.use(...middleware);
 
 app.get('/tasks', (req, res) => {
-
+    // console.log(req)
+    return res.json({tasks: []})
 })
 
 app.post('/tasks', (req, res) => {
     
 })
 
-app.put('/tasks', (req, res) => {
+app.put('/tasks/:id', (req, res) => {
 
 })
 
-app.delete('/tasks', (req, res) => {
+app.delete('/tasks/:id', (req, res) => {
 
 })
-
-app.static();
 
 const port = 6001;
 app.listen(port, () => {

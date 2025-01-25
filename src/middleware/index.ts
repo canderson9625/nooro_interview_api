@@ -1,5 +1,5 @@
-import auth from "./auth"
+import auth from "./auth.ts"
 
-export [
-
+export default [
+    auth,
 ]
