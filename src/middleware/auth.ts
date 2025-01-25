@@ -8,7 +8,7 @@ const auth = {
 }
 
 export default (res, req, next) => {
-    // console.log(auth);
+    console.log("auth middleware");
     // jwts?
     next();
 }

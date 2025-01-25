@@ -1,26 +1,52 @@
 import express from "express/index.js"
-import middleware from "./middleware"
+import middleware from "./middleware/index.ts"
+import prisma from "./prisma/index.ts";
+import { Task } from "@prisma/client";
 
 const app = express();
+const api = express();
 
-app.use(...middleware);
-
-app.get('/tasks', (req, res) => {
-    // console.log(req)
-    return res.json({tasks: []})
+api.get('/tasks', async (req, res, next) => {
+    res.json({tasks: await prisma.getTasks({pageSize: -1})})
+    next()
 })
 
-app.post('/tasks', (req, res) => {
-    
+api.post('/tasks', async (req, res, next) => {
+    res.json({
+        message: "Task Created Successfully!",
+        data: await prisma.createTask({ task: req.body as Task })
+    })
+    next()
 })
 
-app.put('/tasks/:id', (req, res) => {
-
+api.put('/tasks/:taskId', async (req, res, next) => {
+    const task = await prisma.updateTask({ id: Number(req.params.taskId) ?? -1, task: req.body });
+    res.json({
+        message: task 
+            ? `Task: ${task.title} Updated Successfully!`
+            : `Task not successfully updated.`,
+        data: task,
+    })
+    next()
 })
 
-app.delete('/tasks/:id', (req, res) => {
-
+api.delete('/tasks/:taskId', async (req, res, next) => {
+    const task = await prisma.deleteTask({ id: Number(req.params.taskId) ?? -1 });
+    res.json({
+        message: task 
+            ? 'Task Deleted Successfully!'
+            : 'Task not successfully deleted.',
+        data: task,
+    })
+    next()
 })
+
+app.use(express.json(), ...middleware, api, (req, res, next) => {
+    console.log("end")
+
+    // further middleware
+    // next()
+});
 
 const port = 6001;
 app.listen(port, () => {

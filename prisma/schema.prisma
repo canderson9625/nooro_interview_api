@@ -19,6 +19,6 @@ model Task {
   color             String     @db.VarChar(255)
   completedStatus   Boolean    @default(false)
   createdAt         DateTime   @default(now())
-  updatedAt         DateTime   @updatedAt
-  completedAt       DateTime
+  updatedAt         DateTime?  @updatedAt
+  completedAt       DateTime?  
 }
