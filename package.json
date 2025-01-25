@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "deno run -A --watch src/server.ts"
+    "dev": "deno run -A --watch src/server.ts",
+    "start": "node build/server.js"
   },
   "keywords": [],
   "author": "",

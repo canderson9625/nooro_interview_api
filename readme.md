@@ -1,29 +1,15 @@
 # API routes
-
 - `GET /tasks`
 - `POST /tasks`
 - `PUT /tasks/:id`
 - `DELETE /tasks/:id`
 
 # Prisma
-## db provider
-mysql via a docker container
+start mysql with `docker compose up db -d`
+env files are needed for the connection and I can provide those
 
-start with docker compose up db -d
+use `npx prisma migrate dev (--name name_of_migration)` to sync prisma orm with mysql db
 
-## schema
-Tasks should include: 
-- `id` auto increment
-- `title` index varchar
-- `color` varchar
-- `completed status` bool
-- `created_at`
-- `updated_at`
+while the container is running and the migration has been completed `deno src/prisma/seed.ts` to populate with some test data
 
-## migration
-creates the db provider schema from the prisma schema
-
-
-
-## seeding
-this populates the db with test data
+`pnpm start`
