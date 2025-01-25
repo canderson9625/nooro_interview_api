@@ -6,7 +6,10 @@
 - `DELETE /tasks/:id`
 
 # Prisma
-using a docker container with mysql latest
+## db provider
+mysql via a docker container
+
+start with docker compose up db -d
 
 ## schema
 Tasks should include: 
