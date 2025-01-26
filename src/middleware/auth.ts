@@ -1,14 +1,10 @@
 const auth = {
-    authentication: {
-
-    },
-    authorization: {
-        
-    }
-}
+    authentication: {},
+    authorization: {},
+};
 
 export default (res, req, next) => {
     console.log("auth middleware");
     // jwts?
     next();
-}
+};

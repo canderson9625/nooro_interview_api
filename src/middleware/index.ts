@@ -1,5 +1,5 @@
-import auth from "./auth.ts"
+import auth from "./auth.ts";
 
 export default [
     auth,
-]
+];

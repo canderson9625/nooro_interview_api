@@ -6,12 +6,19 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "deno run -A --watch src/server.ts",
-    "start": "node build/server.js"
+    "dev": "deno -A --watch src/server.ts",
+    "build": "deno -A src/buildServer.ts",
+    "start": "node build/server.js",
+    "prisma.first": "pnpm prisma.init && pnpm prisma.seed",
+    "prisma.seed": "npx prisma db seed",
+    "prisma.init": "npx prisma db push"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "prisma": {
+    "seed": "deno -A src/prisma/seed.ts"
+  },
   "dependencies": {
     "@prisma/client": "6.2.1",
     "express": "^4.21.2",
@@ -19,6 +26,7 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
+    "esbuild": "^0.24.2",
     "eslint": "^9.19.0",
     "typescript": "^5.7.3"
   }
